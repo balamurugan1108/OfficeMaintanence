@@ -1,0 +1,95 @@
+
+<div class="main">
+    <div class="container">
+        <div class="card">
+            <h1>Login</h1>
+            <form #f="ngForm" (ngSubmit)="f.form.valid  && onSubmit(f)">
+                <div>
+                    <div>
+                        <label for="email">Email:</label>
+                    </div>
+                    <div class="relative form-group">
+                        <input pInputText type="email" id="email" class="p-inputtext-sm form-control w-full "
+                            name="email" placeholder="Enter your Email" #email="ngModel" [(ngModel)]="model.email"
+                            required [ngClass]="{ 'is-invalid': f.submitted && email.errors }">
+                        <div *ngIf="f.submitted && email.errors " class="invalid-feedback">
+                            <div *ngIf="email.errors['required']">Email is required</div>
+                            <div *ngIf="email.errors['email']">Email is invalid</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-2">
+                    <div>
+                        <label for="password">Password:</label>
+                    </div>
+                    <div class="relative form-group">
+                        <input pInputText [type]="show_button ? 'text' : 'password'" id="password"
+                            class="p-inputtext-sm form-control w-full" placeholder="Enter your password"
+                            [(ngModel)]="model.password" #password="ngModel" required name="password"
+                            [ngClass]="{ 'is-invalid': f.submitted && password.errors }">
+                        <i [class]="show_eye ? 'pi pi-eye' : 'pi pi-eye-slash'" (click)="showPassword()"
+                            [ngStyle]="{'position':'absolute','top':'12px','right':'10px'}"></i>
+                        <div *ngIf="f.submitted && password.errors" class="invalid-feedback">
+                            <div *ngIf="password.errors['required']">Password is required</div>
+                            <div *ngIf="password.errors['minlength']">
+                                Password must be at least 6 characters
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group text-right pt-2">
+                    <button pButton type="submit" pRipple label="Login" class="btns" styleClass="p-button-sm"></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> 
+
+
+<!-- <div class="main">
+    <div class="container">
+        <div class="card">
+            <h1>Login</h1>
+            <form [formGroup]="loginForm">
+                <div>
+                    <div>
+                        <label for="email">Email:</label>
+                    </div>
+                    <div class="relative form-group">
+                        <input pInputText type="email" id="email" class="p-inputtext-sm form-control w-full "
+                            name="email" placeholder="Enter your Email" #email="ngModel" [(ngModel)]="model.email"
+                            required [ngClass]="{ 'is-invalid': f.submitted && email.errors }">
+                        <div *ngIf="f.submitted && email.errors " class="invalid-feedback">
+                            <div *ngIf="email.errors['required']">Email is required</div>
+                            <div *ngIf="email.errors['email']">Email is invalid</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-2">
+                    <div>
+                        <label for="password">Password:</label>
+                    </div>
+                    <div class="relative form-group">
+                        <input pInputText [type]="show_button ? 'text' : 'password'" id="password"
+                            class="p-inputtext-sm form-control w-full" placeholder="Enter your password"
+                            [(ngModel)]="model.password" #password="ngModel" required name="password"
+                            [ngClass]="{ 'is-invalid': f.submitted && password.errors }">
+                        <i [class]="show_eye ? 'pi pi-eye' : 'pi pi-eye-slash'" (click)="showPassword()"
+                            [ngStyle]="{'position':'absolute','top':'12px','right':'10px'}"></i>
+                        <div *ngIf="f.submitted && password.errors" class="invalid-feedback">
+                            <div *ngIf="password.errors['required']">Password is required</div>
+                            <div *ngIf="password.errors['minlength']">
+                                Password must be at least 6 characters
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group text-right pt-2">
+                    <button pButton type="submit" pRipple label="Login" class="btns" styleClass="p-button-sm"></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>  -->

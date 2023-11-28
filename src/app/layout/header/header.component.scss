@@ -1,0 +1,16 @@
+:host ::ng-deep .p-calendar .p-inputtext {
+    display: none;
+}
+
+:host ::ng-deep .p-datepicker {
+    right: 0% !important;
+}
+.profileimg{
+    width: 70px;
+    height: 31px;
+    object-fit: fill;
+    border-radius: 50%;
+}
+.logoutIcon{
+    color: #1AB9E5;
+}

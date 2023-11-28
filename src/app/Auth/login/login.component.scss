@@ -1,0 +1,74 @@
+  
+  .main{
+   background-image: url("./../../../assets/images/BackgroundImage.jpeg") ;
+   background-size: cover;
+
+    min-height: 100vh;
+  }.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .card {
+    width: 385px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 22px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  h1 {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    color: #fff;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .btns {
+    padding: 0.65rem 1.25rem;
+    font-size: 1rem;
+    background-color:#1AB9E5;
+    color: #FFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #1AB9E5 !important;
+  }
+  .invalid-feedback{
+    position: absolute;
+    font-size: 15px;
+    top: 42px;
+    color: #f53d3a;
+  }
+  .ng-invalid .is-invalid {
+    border-color: #fb100a !important;
+  }
+  @media (max-width: 480px) {
+    .card {
+      width: 100%;
+      max-width: 350px;
+    }
+  }
+  
