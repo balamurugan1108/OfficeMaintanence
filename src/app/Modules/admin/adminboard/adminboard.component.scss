@@ -1,0 +1,18 @@
+.btndata{
+    padding: 6px 10px 6px 10px;
+    background-color: #1AB9E5;
+    border: 1px solid #1AB9E5;
+}
+.btndata:enabled:active{
+    background: #1AB9E5 !important;
+    color: #ffffff !important;
+    border-color: #1AB9E5 !important;
+}
+.btndata:enabled:hover {
+    background: #1AB9E5 !important;
+    color: #ffffff !important;
+    border-color: #1AB9E5 !important;
+}
+.btndatas{
+    padding: 6px 10px 6px 10px;
+}

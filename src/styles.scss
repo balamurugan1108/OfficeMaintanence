@@ -1,15 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
 @import "primeicons/primeicons.css";
 @import "primeng/resources/themes/lara-light-blue/theme.css";
-@import "primeng/resources/primeng.css";
 
 body {
-    font-family: 'Poppins', sans-serif;
+   // font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    // background: linear-gradient(to bottom right, #70c1ff, #498ffc);
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-    // min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
   }
+  .tabledata{
+    padding: 20px;
+    
+  }
+  .p-dropdown {
+    width: 100% !important;
+  }
+  
+  .p-calendar {
+    width: 100% !important;
+  }
+  .p-inputtext.p-inputtext-sm {
+    font-size: 0.875rem !important;
+    padding: 0.5rem 0.5rem !important;
+}
+.p-calendar .p-inputtext {
+  flex: 1 1 auto;
+  width: 1%;
+  padding: 0.5rem 0.5rem !important;
+}
+.p-inputtext-sm .p-inputtext {
+  font-size: 0.875rem;
+  padding: 0.5rem 0.5rem !important;
+}
+.p-dropdown-panel .p-dropdown-header .p-dropdown-filter {
+  margin-right: -1.75rem;
+  padding: 0.5rem 0.5rem !important;
+}

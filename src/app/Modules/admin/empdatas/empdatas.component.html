@@ -1,0 +1,344 @@
+<div class="grid">
+    <div class="col-12 md:col-12 lg:col-12 sm:col-12">
+        <div class="card">
+            <div class="tabledata">
+                <div class="grid">
+                    <div class="col-12 lg:col-6">
+                        <h3 class="Title font-bold">User Details</h3>
+                    </div>
+                    <div class="col-12 lg:col-6" style="place-content: center;display: grid;justify-content: flex-end;">
+                        <div class="text-right">
+                            <button pButton pRipple label="Add Users" (click)="showBasicDialog()" icon="pi pi-plus"
+                                iconPos="left" styleClass="p-button-sm" class="btndata text-white"></button>
+                        </div>
+                    </div>
+                </div>
+                <p-table #dt1 [value]="userInfo" [paginator]="true" [alwaysShowPaginator]="true" [scrollable]="true"
+                    [rows]="changePerPagenumber" dataKey="id" styleClass="p-datatable-gridlines p-datatable-sm"
+                    [tableStyle]="{ 'min-width': '60rem' }" editMode="row" [globalFilterFields]="['firstName','email','mobilenumber',
+                        'dob','address','imageFilePath','role']" responsiveLayout="scroll">
+                    <ng-template pTemplate="caption">
+                        <div class="grid m-0">
+                            <div class="col-12 lg:col-8">
+                                <input type="text" pInputText placeholder="Search Results"
+                                    class="filters p-inputtext-sm"
+                                    (input)="dt1.filterGlobal(getTableValue($event),'contains')" />
+                            </div>
+                            <div class="col-12 lg:col-4">
+                                <div class="grid m-0">
+                                    <div class="field col-12 md:col-6 lg:col-8">
+                                    </div>
+                                    <div class="col-12 lg:col-3">
+                                        <p-dropdown [options]="pageSizes" (onChange)="changePerPage($event)"
+                                            [ngStyle]="{'float':'right'}" optionLabel="text"></p-dropdown>
+                                    </div>
+                                    <div class="col-12 lg:col-1">
+                                        <i class="pi pi-cog  mt-2 cursor-pointer Table_header
+                                    text-2xl" pTooltip="Hide & Show Columns" tooltipPosition="left"
+                                            (click)="op.toggle($event)">
+                                            <p-overlayPanel #op [style]="{width:
+                                        '270px',height:'300px',overflowY:'scroll'}">
+                                                <ng-template pTemplate>
+
+                                                    <h4 class="m-0">Hide / Show Columns</h4>
+                                                    <hr>
+                                                    <div class="field-checkbox">
+                                                        <p-checkbox name="serialNo" value="serialNo" inputId="serialNo"
+                                                            [binary]="true" [(ngModel)]="serialNo"></p-checkbox>
+                                                        <label for="serialNo">S.No</label>
+                                                    </div>
+                                                    <div class="field-checkbox">
+                                                        <p-checkbox name="name" value="name" inputId="name"
+                                                            [binary]="true" [(ngModel)]="name"></p-checkbox>
+                                                        <label for="name">Name</label>
+                                                    </div>
+                                                    <div class="field-checkbox">
+                                                        <p-checkbox name="emailaddress" [binary]="true"
+                                                            [(ngModel)]="emailaddress" value="emailaddress"
+                                                            inputId="emailaddress"></p-checkbox>
+                                                        <label for="emailaddress">Email Address</label>
+                                                    </div>
+                                                    <div class="field-checkbox">
+                                                        <p-checkbox name="mobileno" [binary]="true"
+                                                            [(ngModel)]="mobileno" value="mobileno"
+                                                            inputId="mobileno"></p-checkbox>
+                                                        <label for="mobileno">Mobile No</label>
+                                                    </div>
+                                                    <div class="field-checkbox">
+                                                        <p-checkbox name="dateOfJoin" [binary]="true"
+                                                            [(ngModel)]="dateOfJoin" value="dateOfJoin"
+                                                            inputId="dateOfJoin"></p-checkbox>
+                                                        <label for="dateOfJoin">Date Of Birth</label>
+                                                    </div>
+                                                    <div class="field-checkbox">
+                                                        <p-checkbox name="addresss" [binary]="true"
+                                                            [(ngModel)]="addresss" value="addresss"
+                                                            inputId="addresss"></p-checkbox>
+                                                        <label for="addresss">Address</label>
+                                                    </div>
+                                                    <div class="field-checkbox">
+                                                        <p-checkbox name="Role" [binary]="true" [(ngModel)]="Role"
+                                                            value="Role" inputId="Role"></p-checkbox>
+                                                        <label for="Role">Role</label>
+                                                    </div>
+                                                    <div class="field-checkbox">
+                                                        <p-checkbox name="profileimg" value="profileimg"
+                                                            inputId="profileimg" [binary]="true"
+                                                            [(ngModel)]="profileimg"></p-checkbox>
+                                                        <label for="profileimg">Profile-Image</label>
+                                                    </div>
+                                                    <div class="field-checkbox">
+                                                        <p-checkbox name="action" [binary]="true" [(ngModel)]="action"
+                                                            value="action" inputId="action"></p-checkbox>
+                                                        <label for="action">Action</label>
+                                                    </div>
+                                                </ng-template>
+                                            </p-overlayPanel>
+                                        </i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th class="text-center">S.No</th>
+                            <th class="text-center" *ngIf="name" pSortableColumn="name">
+                                Name <p-sortIcon field="name"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="emailaddress" *ngIf="emailaddress" class="text-center">Email
+                                Address<p-sortIcon field="emailaddress"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="mobileno" *ngIf="mobileno" class="text-center">MobileNumber<p-sortIcon
+                                    field="mobileno"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="dateOfJoin" *ngIf="dateOfJoin" class="text-center">Date Of
+                                Birth<p-sortIcon field="dateOfJoin"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="addresss" *ngIf="addresss" class="text-center">Address
+                                <p-sortIcon field="addresss"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="profileimg" *ngIf="profileimg" class="text-center">Profile-Image
+                                <p-sortIcon field="profileimg"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="Role" *ngIf="Role" class="text-center">Role
+                                <p-sortIcon field="Role"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="action" *ngIf="action" class="text-center">Actions<p-sortIcon
+                                    field="action"></p-sortIcon>
+                            </th>
+
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-product let-editing="editing" let-ri="rowIndex" let-rowNode
+                        let-rowData="rowData" let-i let-columns="columns">
+                        <tr [pEditableRow]="product">
+                            <td>{{ri+1}}</td>
+                            <td *ngIf="name">
+                                <p-cellEditor>
+                                    <ng-template pTemplate="input">
+                                        <input pInputText type="text" name="firstName" [(ngModel)]="product.firstname">
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                        {{product.firstname + " " + product.lastname}}
+                                    </ng-template>
+                                </p-cellEditor>
+                            </td>
+                            <td *ngIf="emailaddress">
+                                <p-cellEditor>
+                                    <ng-template pTemplate="input">
+                                        <input pInputText type="email" name="email" [(ngModel)]="product.email">
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                        {{product.email}}
+                                    </ng-template>
+                                </p-cellEditor>
+                            </td>
+                            <td *ngIf="mobileno">
+                                <p-cellEditor>
+                                    <ng-template pTemplate="input">
+                                        <input pInputText type="number" name="mobilenumber"
+                                            [(ngModel)]="product.mobilenumber">
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                        {{product.mobilenumber}}
+                                    </ng-template>
+                                </p-cellEditor>
+                            </td>
+                            <td *ngIf="dateOfJoin">
+                                <p-cellEditor>
+                                    <ng-template pTemplate="input">
+                                        <p-calendar inputId="toDate" appendTo="body" [(ngModel)]="product.dob"
+                                            name="toDate" dateFormat="dd/mm/yy" class="w-full form-control"
+                                            [required]="true"></p-calendar>
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                        {{product.dob | date:'yyyy/MM/dd'}}
+                                    </ng-template>
+                                </p-cellEditor>
+                            </td>
+                            <td *ngIf="addresss">
+                                <p-cellEditor>
+                                    <ng-template pTemplate="input">
+                                        <input pInputText type="text" name="address" [(ngModel)]="product.address">
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                        {{product.address}}
+                                    </ng-template>
+                                </p-cellEditor>
+                            </td>
+                            <td *ngIf="profileimg">
+                                <p-cellEditor>
+                                    <ng-template pTemplate="input">
+                                        <input pInputText type="text" name="userId" [(ngModel)]="product.imageFilePath">
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                        {{product.imageFilePath}}
+                                    </ng-template>
+                                </p-cellEditor>
+                            </td>
+                            <td *ngIf="Role">
+                                <p-cellEditor>
+                                    <ng-template pTemplate="input">
+                                        <input pInputText type="text" name="role" [(ngModel)]="product.role">
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                        {{product.role}}
+                                    </ng-template>
+                                </p-cellEditor>
+                            </td>
+                            <td *ngIf="action">
+                                <div class="flex align-items-center
+                            justify-content-center gap-2">
+                                    <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow
+                                        icon="pi pi-pencil" (click)="onRowEditInit(product.id,product)"
+                                        tooltipStyleClass="tooltips" pTooltip="Edit" tooltipPosition="bottom"
+                                        class="p-button-rounded p-button-text"></button>
+                                    <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow
+                                        pTooltip="Save" tooltipPosition="bottom" icon="pi pi-check"
+                                        (click)="updateUserdata(product)" class="p-button-rounded p-button-text
+                                p-button-success mr-2"></button>
+                                    <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow
+                                        pTooltip="Cancel" tooltipPosition="bottom" icon="pi pi-times"
+                                        (click)="onRowEditCancel(product, ri)" class="p-button-rounded p-button-text
+                                p-button-danger"></button>
+                                    <button pButton *ngIf="!editing" pRipple type="button" pCancelEditableRow
+                                        icon="pi pi-trash" tooltipStyleClass="tooltips" pTooltip="Delete"
+                                        tooltipPosition="bottom" (click)="confirmSubmit(product.stayDetailId)" class="p-button-rounded p-button-text
+                                p-button-danger"></button>
+                                </div>
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="summary">
+                        <div class="flex align-items-center
+                            justify-content-between">
+                            <p class="m-0 footer">{{ dt1.totalRecords }} Records
+                                Found.</p>
+                        </div>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </div>
+</div>
+<p-dialog header="Add User Details" [maximizable]="true" [(visible)]="displayBasic" [style]="{width: '80vw'}"
+    [modal]="true" appendTo="body" [draggable]="false" [resizable]="false">
+    <form #b="ngForm" name="form">
+        <div class="grid pt-2">
+            <div class="col-12 lg:col-4 md:col-4 mb-2 relative">
+                <div class="field m-0 w-full">
+                    <label for="integeronly">First Name :</label>
+                    <input pInputText name="firstname" #firstname="ngModel" [(ngModel)]="modelStay.firstname"
+                        class="w-full form-control p-inputtext-sm">
+                </div>
+
+            </div>
+
+            <div class="col-12 lg:col-4 md:col-4 mb-2 relative">
+                <div class="field m-0 w-full ">
+                    <div class="field m-0 w-full">
+                        <label for="integeronly">Last Name :</label>
+                        <input pInputText name="lastname" #lastname="ngModel" [(ngModel)]="modelStay.lastname"
+                            class="w-full form-control p-inputtext-sm">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-12 lg:col-4 md:col-4 mb-2 relative">
+                <div class="field m-0 w-full ">
+                    <div class="field m-0 w-full">
+                        <label for="integeronly">Email Address :</label>
+                        <input pInputText name="email" #email="ngModel" [(ngModel)]="modelStay.email"
+                            class="w-full form-control p-inputtext-sm">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 lg:col-4 md:col-4 mb-2 relative">
+                <div class="field m-0 w-full ">
+                    <div class="field m-0 w-full">
+                        <label for="integeronly">Password :</label>
+                        <input type="password" pInputText name="passWord" #passWord="ngModel"
+                            [(ngModel)]="modelStay.passWord" class="w-full form-control p-inputtext-sm">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-12 lg:col-4 md:col-4 mb-2">
+                <div class="field m-0 w-full">
+                    <label for="integeronly">Mobile Number :</label>
+                    <input type="text" pInputText name="mobilenumber" #mobilenumber="ngModel"
+                        [(ngModel)]="modelStay.mobilenumber" class="w-full form-control p-inputtext-sm">
+                </div>
+            </div>
+
+            <div class="col-12 lg:col-4 md:col-4 mb-2 relative">
+                <div class="field m-0 w-full ">
+                    <label for="integeronly">Date of Birth :</label>
+                    <p-calendar #dobs="ngModel" appendTo="body" [(ngModel)]="modelStay.dobs" name="dobs"
+                         class="w-full form-control p-inputtext-sm"></p-calendar>
+                </div>
+            </div>
+            
+
+            <div class="col-12 lg:col-4 md:col-4 mb-2 relative">
+                <div class="field m-0 w-full">
+                    <label for="supportNo">Address</label>
+                    <input [(ngModel)]="modelStay.Address" name="Address" id="inputtext" class="w-full
+                        form-control p-inputtext-sm" #Address="ngModel" [required]="true" pInputText>
+                </div>
+
+            </div>
+
+            <div class="col-12 lg:col-4 md:col-4 mb-2 relative">
+                <div class="field m-0 w-full">
+                    <label for="integeronly">Role :</label><br />
+                    <input [(ngModel)]="modelStay.role" name="role" id="inputtext" class="w-full
+                    form-control p-inputtext-sm" #role="ngModel" [required]="true" pInputText>
+                </div>
+            </div>
+
+            <div class="col-12 lg:col-4 md:col-4 mb-2">
+                <label for="selectedFilePath">Profile Image:</label>
+                <!-- <p-fileUpload (onSelect)="imgUpload($event)" id="selectedFilePath" name="selectedFilePath"
+                    #selectedFilePath="ngModel" [(ngModel)]="modelStay.selectedFilePath"
+                    [style]="{'minWidth':'50px', 'width': '100%'}" class="file-upload-btn" mode="basic"
+                    chooseLabel="Upload"></p-fileUpload> -->
+
+                    <p-fileUpload (onSelect)="imgUpload($event)" id="selectedFilePath" name="selectedFilePath" #selectedFilePath="ngModel"
+                     [(ngModel)]="modelStay.selectedFilePath"  [style]="{'minWidth':'50px', 'width': '100%'}" class="file-upload-btn" mode="basic"
+                    chooseLabel="Upload"></p-fileUpload>
+            </div>
+        </div>
+    </form>
+    <ng-template pTemplate="footer">
+        <p-button class="pr-3 btndatas p-button-secondary" label="Cancel" styleClass="p-button-secondary p-button-sm"
+            (onClick)="b.reset({});staydetailsreset()">
+        </p-button>
+        <p-button type="button" (onClick)="Submit();b.reset({})" [disabled]="b.invalid?true:false"
+            styleClass="p-button-sm" label="Submit"></p-button>
+    </ng-template>
+</p-dialog>

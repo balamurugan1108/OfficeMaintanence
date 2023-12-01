@@ -9,8 +9,11 @@ import { PrimengModule } from './primeng/primeng.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutComponent } from './layout/layout.component';
 import { HeaderComponent } from './layout/header/header.component';
-import { EmployeeDetailsComponent } from './Modules/employee-details/employee-details.component';
 import { FooterComponent } from './layout/footer/footer.component';
+import { SidebarComponent } from './layout/sidebar/sidebar.component';
+import { MessageService } from 'primeng/api';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -18,20 +21,22 @@ import { FooterComponent } from './layout/footer/footer.component';
     LoginComponent,
     LayoutComponent,
     HeaderComponent,
-    EmployeeDetailsComponent,
     FooterComponent,
+    SidebarComponent,
     
   ],
   imports: [
+    
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     PrimengModule,
     BrowserAnimationsModule,
+    HttpClientModule
     
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,18 +1,35 @@
 <div>
-    <div class="grid m-0" style="box-shadow: 0px 0px 5px 1px lightgray;">
-        <div class="lg:col-4" style="display: grid;place-content: center;">
-            <img src="./../../../assets/images/dark-logo.png" width="50%">
+    <div class="grid m-0" style="border-bottom: 1px solid #d2d4d9; box-shadow: 0px 0px 4px 1px #9a9da3; background-color: #EDF1F5;">
+        <div class="lg:col-2" style="text-align: center;">
+            <img src="./../../../assets/images/logo-no-background1.png" width="30%" >
         </div>
-        <div class="lg:col-7">
-           
+        <div class="lg:col-1 sideAngle" >
+            <i *ngIf="angleshow" (click)="angleright()" class="pi pi-angle-left text-3xl cursor-pointer" aria-hidden="true"></i>
+            <i *ngIf="anglehide" (click)="angleleft()" class="pi pi-angle-right text-3xl cursor-pointer" aria-hidden="true"></i>
         </div>
-        <div class="lg:col-1" style="display: grid;place-content: center;">
-            <!-- <button pTooltip="Logout" tooltipPosition="bottom"  pButton pRipple type="button"
-            icon="pi pi-fw pi-sign-out " class="p-button-outlined ml-2"></button>      -->
-            <i class="pi pi-sign-out text-2xl ml-2 logoutIcon cursor-pointer" (click)="logout()" aria-hidden="true"></i>
-           </div>
+        <div class="lg:col-6" style="display: grid;place-content: center;color: #216521;">
+            
+        </div>
+        <div class="lg:col-3" style="display: grid;place-content: center;justify-content: end;">
+            <i class="pi pi-sign-out text-2xl mr-3 logoutIcon cursor-pointer" (click)="logout()" aria-hidden="true"></i>
+        </div>
     </div>
 </div>
-<div class="layout-topbar-menu align-items-center">
-    
-</div>
+
+<!-- <div class="layout-topbar">
+    <a class="layout-topbar-logo" >
+        <img src="./../../../assets/images/logo-no-background1.png" height="70px" alt="visualapp-foundry">
+    </a>
+    <div class="layout-menu-button" style="display: grid;place-content: center;justify-content: flex-start;">
+        <i *ngIf="angleshow" (click)="angleright()" class="pi pi-angle-left text-3xl cursor-pointer" aria-hidden="true"></i>
+        <i *ngIf="anglehide" (click)="angleleft()" class="pi pi-angle-right text-3xl cursor-pointer" aria-hidden="true"></i>
+    </div>
+
+    <div class="layout-topbar-menu align-items-center">
+        <a class="p-link layout-topbar-button">
+            <img src="../assets/images/users/userprofile.png" tooltipPosition="bottom" alt="user-profile" class="profileimg cursor-pointer">
+        </a>
+        <button pTooltip="Logout" tooltipPosition="bottom" (click)="logout()" pButton pRipple type="button"
+            icon="pi pi-fw pi-sign-out " class="p-button-outlined ml-2"></button>
+    </div>
+</div> -->

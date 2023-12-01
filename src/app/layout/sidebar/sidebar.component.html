@@ -1,0 +1,24 @@
+<div *ngIf="show" class="side_bar h-100">
+  <div class="acordian">
+    <div class="acordian_heder">
+      <div class="layout-menu-container">
+        <ul class="layout-menu" role="menu" (keydown)="onKeydown($event)">
+          <li app-menu class="layout-menuitem-category" *ngFor="let item of model; let i = index" role="none">
+            <div class="layout-menuitem-root-text text-base" [attr.aria-label]="item.label">
+              {{ item.label }}
+            </div>
+            <ul role="menu">
+              <li class="text-base" app-menuitem *ngFor="let child of item.items; let j = index" role="none">
+                <a [routerLink]="child.routerLink" [queryParams]="child.queryParams" [routerLinkActive]="['active']"
+                  role="menuitem">
+                  <span class="pi {{ child.icon }}"></span>
+                  {{ child.label }}
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

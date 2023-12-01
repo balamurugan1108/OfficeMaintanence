@@ -6,5 +6,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent {
+  showSidebar: boolean = false;
+  constructor() {}
 
+  ngOnInit(): void {
+    this.onHideSidebar();
+    this.onShowSidebar();
+  }
+  onShowSidebar() {
+    this.showSidebar = true;
+  }
+
+  onHideSidebar() {
+    this.showSidebar = false;
+  }
 }

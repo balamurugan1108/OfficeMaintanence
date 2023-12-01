@@ -1,0 +1,204 @@
+<div class="grid">
+    <div class="col-12 md:col-12 lg:col-12 sm:col-12">
+        <div class="card">
+            <div class="tabledata">
+                <div class="grid">
+                    <div class="col-12 lg:col-12">
+                        <h3 class="Title font-bold">Issues</h3>
+                    </div>
+                </div>
+                <p-table #dt1 [value]="ticketInfo" [paginator]="true" [alwaysShowPaginator]="true" [scrollable]="true"
+                    [rows]="changePerPagenumber" dataKey="id" styleClass="p-datatable-gridlines p-datatable-sm"
+                    [tableStyle]="{ 'min-width': '60rem' }" editMode="row" [globalFilterFields]="['firstName','email','mobilenumber',
+                        'dob','address','imageFilePath','role']" responsiveLayout="scroll">
+                    <ng-template pTemplate="caption">
+                        <div class="grid m-0">
+                            <div class="col-12 lg:col-8">
+                                <input type="text" pInputText placeholder="Search Results"
+                                    class="filters p-inputtext-sm"
+                                    (input)="dt1.filterGlobal(getTableValue($event),'contains')" />
+                            </div>
+                            <div class="col-12 lg:col-4">
+                                <div class="grid m-0">
+                                    <div class="field col-12 md:col-6 lg:col-8">
+                                    </div>
+                                    <div class="col-12 lg:col-3">
+                                        <p-dropdown [options]="pageSizes" (onChange)="changePerPage($event)"
+                                            [ngStyle]="{'float':'right'}" optionLabel="text"></p-dropdown>
+                                    </div>
+                                    <div class="col-12 lg:col-1">
+                                        <i class="pi pi-cog  mt-2 cursor-pointer Table_header
+                                    text-2xl" pTooltip="Hide & Show Columns" tooltipPosition="left"
+                                            (click)="op.toggle($event)">
+                                            <p-overlayPanel #op [style]="{width:
+                                        '270px',height:'300px',overflowY:'scroll'}">
+                                                <ng-template pTemplate>
+
+                                                    <h4 class="m-0">Hide / Show Columns</h4>
+                                                    <hr>
+                                                    <div class="field-checkbox">
+                                                        <p-checkbox name="ticketnos" value="ticketnos"
+                                                            inputId="ticketnos" [binary]="true"
+                                                            [(ngModel)]="ticketnos"></p-checkbox>
+                                                        <label for="ticketnos">Ticket No</label>
+                                                    </div>
+                                                    <div class="field-checkbox">
+                                                        <p-checkbox name="names" value="names" inputId="names"
+                                                            [binary]="true" [(ngModel)]="names"></p-checkbox>
+                                                        <label for="names">Name</label>
+                                                    </div>
+
+                                                    <div class="field-checkbox">
+                                                        <p-checkbox name="ipAddresss" [binary]="true"
+                                                            [(ngModel)]="ipAddresss" value="ipAddresss"
+                                                            inputId="ipAddresss"></p-checkbox>
+                                                        <label for="ipAddresss">IP Address</label>
+                                                    </div>
+                                                    <div class="field-checkbox">
+                                                        <p-checkbox name="commands" [binary]="true"
+                                                            [(ngModel)]="commands" value="commands"
+                                                            inputId="commands"></p-checkbox>
+                                                        <label for="commands">Command</label>
+                                                    </div>
+                                                    <div class="field-checkbox">
+                                                        <p-checkbox name="createbys" [binary]="true"
+                                                            [(ngModel)]="createbys" value="createbys"
+                                                            inputId="createbys"></p-checkbox>
+                                                        <label for="createbys">Created By</label>
+                                                    </div>
+                                                    <div class="field-checkbox">
+                                                        <p-checkbox name="prioritys" [binary]="true"
+                                                            [(ngModel)]="prioritys" value="prioritys"
+                                                            inputId="prioritys"></p-checkbox>
+                                                        <label for="prioritys">Priority</label>
+                                                    </div>
+
+                                                    <div class="field-checkbox">
+                                                        <p-checkbox name="action" [binary]="true" [(ngModel)]="action"
+                                                            value="action" inputId="action"></p-checkbox>
+                                                        <label for="action">Action</label>
+                                                    </div>
+                                                </ng-template>
+                                            </p-overlayPanel>
+                                        </i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th class="text-center">Ticket No</th>
+                            <th class="text-center" *ngIf="names" pSortableColumn="names">
+                                Name <p-sortIcon field="names"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="ipAddresss" *ngIf="ipAddresss" class="text-center">IP
+                                Address<p-sortIcon field="ipAddresss"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="commands" *ngIf="commands" class="text-center">Command
+                                <p-sortIcon field="commands"></p-sortIcon>
+                            </th>
+
+                            <th pSortableColumn="createbys" *ngIf="createbys" class="text-center">CreateBy
+                                <p-sortIcon field="createbys"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="prioritys" *ngIf="prioritys" class="text-center">Priority
+                                <p-sortIcon field="prioritys"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="action" *ngIf="action" class="text-center">Actions<p-sortIcon
+                                    field="action"></p-sortIcon>
+                            </th>
+
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-product let-editing="editing" let-ri="rowIndex" let-rowNode
+                        let-rowData="rowData" let-i let-columns="columns">
+                        <tr [pEditableRow]="product">
+                            <td>{{product.ticketNO}}</td>
+                            <td *ngIf="names">
+                                <p-cellEditor>
+                                    <ng-template pTemplate="input">
+                                        <input pInputText type="text" name="name" [(ngModel)]="product.name">
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                        {{product.name}}
+                                    </ng-template>
+                                </p-cellEditor>
+                            </td>
+                            <td *ngIf="ipAddresss">
+                                <p-cellEditor>
+                                    <ng-template pTemplate="input">
+                                        <input pInputText type="number" name="ipAddress"
+                                            [(ngModel)]="product.ipAddress">
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                        {{product.ipAddress}}
+                                    </ng-template>
+                                </p-cellEditor>
+                            </td>
+                            <td *ngIf="commands">
+                                <p-cellEditor>
+                                    <ng-template pTemplate="input">
+                                        <input pInputText type="text" name="command" [(ngModel)]="product.command">
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                        {{product.command}}
+                                    </ng-template>
+                                </p-cellEditor>
+                            </td>
+
+                            <td *ngIf="createbys">
+                                <p-cellEditor>
+                                    <ng-template pTemplate="input">
+                                        <input pInputText type="number" name="createBy" [(ngModel)]="product.createBy">
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                        {{product.createBy}}
+                                    </ng-template>
+                                </p-cellEditor>
+                            </td>
+                            <td *ngIf="prioritys">
+                                <p-cellEditor>
+                                    <ng-template pTemplate="input">
+                                        <input pInputText type="text" name="priority" [(ngModel)]="product.priority">
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                        {{product.priority}}
+                                    </ng-template>
+                                </p-cellEditor>
+                            </td>
+                            <td *ngIf="action">
+                                <div class="flex align-items-center
+                            justify-content-center gap-2">
+                                    <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow
+                                        icon="pi pi-pencil" (click)="onRowEditInit(product.id,product)"
+                                        tooltipStyleClass="tooltips" pTooltip="Edit" tooltipPosition="bottom"
+                                        class="p-button-rounded p-button-text"></button>
+                                    <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow
+                                        pTooltip="Save" tooltipPosition="bottom" icon="pi pi-check"
+                                        (click)="updateUserdata(product)" class="p-button-rounded p-button-text
+                                p-button-success mr-2"></button>
+                                    <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow
+                                        pTooltip="Cancel" tooltipPosition="bottom" icon="pi pi-times"
+                                        (click)="onRowEditCancel(product, ri)" class="p-button-rounded p-button-text
+                                p-button-danger"></button>
+                                    <button pButton *ngIf="!editing" pRipple type="button" pCancelEditableRow
+                                        icon="pi pi-trash" tooltipStyleClass="tooltips" pTooltip="Delete"
+                                        tooltipPosition="bottom" (click)="confirmSubmit(product.stayDetailId)" class="p-button-rounded p-button-text
+                                p-button-danger"></button>
+                                </div>
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="summary">
+                        <div class="flex align-items-center
+                            justify-content-between">
+                            <p class="m-0 footer">{{ dt1.totalRecords }} Records
+                                Found.</p>
+                        </div>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </div>
+</div>

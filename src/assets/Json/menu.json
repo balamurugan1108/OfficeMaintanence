@@ -1,0 +1,22 @@
+{
+    "item": [
+        {
+            "icon": "",
+            "Routerlink": "/admin",
+            "Name": "Admin",
+            "role": 1
+        },
+        {
+            "icon": "",
+            "Routerlink": "/employee",
+            "Name": "Employee",
+            "role": 2
+        },
+        {
+            "icon": "",
+            "Routerlink": "/student",
+            "Name": "Student",
+            "role": 3
+        }
+    ]
+}
